@@ -70,7 +70,7 @@ A site where users can come to search for new music, see trending songs around t
 
 ## Wireframes
 
-Work in Progress
+https://wireframe.cc/9ykAuK
 
 ### MVP/PostMVP - 5min 
 
