@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .header-container {
     background-image: url('https://res.cloudinary.com/anthony-dev/image/upload/v1578071315/hands-up_tujitx.jpg');
     background-size: contain;
@@ -24,6 +28,7 @@
     height: 800px;
     background-color: blue;
     justify-content: center;
+    text-align: center;
 }
 
 .right-container {

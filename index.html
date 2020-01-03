@@ -18,8 +18,16 @@
 
         <div class="left-container">
             <br>
-            <input type="text" placeholder="Search" value="" id="search-bar">
-            <input type="button" placeholder="Submit">
+
+            <div>
+                <input type="text" name="search-box" placeholder="Search" value="" id="search-bar">
+                <input type="submit" value="Get Results" id="get-results">
+            </div>
+            <br>
+            <div class="artist-info">
+                <div id="artist-image"></div>
+                <div id="artist-name"></div>
+            </div>
 
         </div>
 
@@ -39,7 +47,7 @@
         <h4 class="copyright">Anthony Jimenez 2020</h4>
 
     </footer>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./JS/main.js"></script>
 </body>
 
