@@ -3,10 +3,11 @@ body {
 }
 
 .header-container {
-    background-image: url('https://res.cloudinary.com/anthony-dev/image/upload/v1578071315/hands-up_tujitx.jpg');
+    /* background-image: url('https://res.cloudinary.com/anthony-dev/image/upload/v1578071315/hands-up_tujitx.jpg'); */
+    background-color: black;
     background-size: contain;
     width: auto;
-    height: 450px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +27,7 @@ body {
     max-width: 20%;
     width: 400px;
     height: 800px;
-    background-color: blue;
+    /* background-color: blue; */
     justify-content: center;
     text-align: center;
 }
