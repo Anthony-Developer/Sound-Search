@@ -95,8 +95,8 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Jan 2rd| Project Prompt | Incomplete
-|Jan 3rd| Wireframes / Priority Matrix / Basic Structure | Incomplete
+|Jan 2rd| Project Prompt | Complete
+|Jan 3rd| Wireframes / Priority Matrix / Basic Structure | Complete
 |Jan 4th| Retrieve Data from API / Display Data On Site  | Incomplete
 |Jan 5th| Play Audio from API | Incomplete
 |Jan 6th| Make Site Responsive / Trending Songs | Incomplete
