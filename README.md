@@ -106,26 +106,6 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Priority Matrix
 
-Work In Progress
-
-## Timeframes
-
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
-| --- | :---: |  :---: | :---: | :---: |
-| HTML Structure | M | 1hr| tbd | tbd |
-| Basic CSS Styles | M | 2hrs| tbd | tbd |
-| Category Buttons | M | 2hrs | tbd | tbd |
-| API to Display Question and Randomize Position of Answer Choices | H | 4hrs | tbd | tbd |
-| Record User Answers - Evaluate Right/Wrong | H | 4hrs | tbd | tbd |
-| Track Score | H | 4hrs | tbd | tbd |
-| Finish Game & Display Result | H | 3hrs | tbd | tbd |
-| Reset Game Function | M | 3hrs | tbd | tbd |
-| Additional Styling Effects (e.g. Animation, Responsive Media Queries) | L | 2hrs | tbd | tbd |
-| Total | H | 25hrs| tbd | tbd |
-
-
-## Priority Matrix
-
 Include a full list of features that have been prioritized based on the `Time and Importance` Matrix.  Link this image in a similar manner to your wireframes
 
 ## Timeframes
