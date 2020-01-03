@@ -1,0 +1,58 @@
+.header-container {
+    background-image: url('https://res.cloudinary.com/anthony-dev/image/upload/v1578071315/hands-up_tujitx.jpg');
+    background-size: contain;
+    width: auto;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-title {
+    color: white;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.left-container {
+    max-width: 20%;
+    width: 400px;
+    height: 800px;
+    background-color: blue;
+    justify-content: center;
+}
+
+.right-container {
+    max-width: 30%;
+    width: 400px;
+    height: 800px;
+    background-color: blueviolet;
+}
+
+.center-container {
+    max-width: 50%;
+    width: 800px;
+    height: 800px;
+    background-color: chocolate;
+}
+
+.copyright {
+    color: white;
+}
+
+footer {
+    background-color: black;
+    text-align: center;
+    padding: 30px;
+}
+
+img {
+    background-size: contain;
+    max-width: 950px;
+    width: 100%;
+    height: auto;
+}
