@@ -7,7 +7,7 @@ body {
     background-color: black;
     background-size: contain;
     width: auto;
-    height: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,10 +17,12 @@ body {
     color: white;
 }
 
-.main-content {
+.main-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    color: black;
+    text-align: center;
 }
 
 .left-container {
@@ -36,14 +38,40 @@ body {
     max-width: 30%;
     width: 400px;
     height: 800px;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    text-align: center;
+}
+
+.track-one-img, .track-two-img, .track-three-img, .track-four-img, .track-five-img {
+    max-width: 30%;
+    display: inline-block;
+}
+
+.track-one, .track-two, .track-three, .track-four, .track-five {
+    display: flex;
+}
+
+.track-one-name {
+    text-align: center;
+    display: inline;
+}
+
+.track-one-album {
+    display: inline;
+
 }
 
 .center-container {
     max-width: 50%;
     width: 800px;
     height: 800px;
-    background-color: chocolate;
+    /* background-color: chocolate; */
+}
+
+.artist-bio {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
 }
 
 .copyright {
