@@ -97,7 +97,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |---|---| ---|
 |Jan 2rd| Project Prompt | Complete
 |Jan 3rd| Wireframes / Priority Matrix / Basic Structure | Complete
-|Jan 4th| Retrieve Data from API / Display Data On Site  | Incomplete
+|Jan 4th| Retrieve Data from API / Display Data On Site  | Complete
 |Jan 5th| Play Audio from API | Incomplete
 |Jan 6th| Make Site Responsive / Trending Songs | Incomplete
 |Jan 7th| Create Themes | Incomplete
@@ -118,16 +118,15 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Initial Structure and Styling | H | 3 hrs| 0 hrs | 0 hrs |
-| Retreive Data from API Using Search | H | 4 hrs| 0 hrs | 0 hrs |
-| Display Data on Site | H | 4 hrs| 0 hrs | 0 hrs |
-| Retreive data from API using search | H | 4 hrs| 0 hrs | 0 hrs |
+| Initial Structure and Styling | H | 3 hrs| 2 hrs | 0 hrs |
+| Retreive Data from API Using Search | H | 4 hrs| 2.5 hrs | 0 hrs |
+| Display Data on Site | H | 4 hrs| 2 hrs | 0 hrs |
 | Get Music to Play on Site | H | 4 hrs| 0 hrs | 0 hrs |
 | Get Trending Songs From Around The World | M | 2 hrs| 0 hrs | 0 hrs |
 | Create New Display For Trendings Songs | M | 4 hrs| 0 hrs | 0 hrs |
 | Implement "Buy Song" Feature | L | 4 hrs| 0 hrs | 0 hrs |
 | Create a "Theme" Toggle for Site | L | 3 hrs| 0 hrs | 0 hrs |
-| Total | H | 32 hrs| 0 hrs | 0 hrs |
+| Total | H | 28 hrs| 0 hrs | 0 hrs |
 
 
 ## Code Snippet
