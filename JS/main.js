@@ -27,14 +27,18 @@ async function returnResults() {
     let recordLabel = bioResponse.data.artists[0].strLabel
     let artistGenre = bioResponse.data.artists[0].strGenre
     let artistFormedYear = bioResponse.data.artists[0].intFormedYear
+    let artistWebpage = document.createElement('h4')
+    artistWebpage.innerHTML = `Artist's Webpage`
     let artistURL = bioResponse.data.artists[0].strWebsite.toString()
-    let artistWebpage = document.createElement('a')
-    artistWebpage.setAttribute('href', `${artistURL}`)
-    artistWebpage.innerHTML = 'Artist Webpage'
+    let artistWebpageLink = document.createElement('a')
+    artistWebpageLink.setAttribute('href', `${artistURL}`)
+    artistWebpageLink.innerHTML = artistURL
+    let artistTwitter = document.createElement('h4')
+    artistTwitter.innerHTML = `Artist's Twitter`
     let artistTwitterURL = bioResponse.data.artists[0].strTwitter.toString()
-    let artistTwitter = document.createElement('a')
-    artistTwitter.setAttribute('href', `${artistTwitterURL}`)
-    artistTwitter.innerHTML = 'Artist Twitter'
+    let artistTwitterLink = document.createElement('a')
+    artistTwitterLink.setAttribute('href', `${artistTwitterURL}`)
+    artistTwitterLink.innerHTML = artistTwitterURL
     let artistBiographyData = bioResponse.data.artists[0].strBiographyEN
     let artistBiography = document.createElement('p')
     artistBiography.innerText = artistBiographyData
@@ -49,7 +53,9 @@ async function returnResults() {
     document.querySelector('.genre').append(`Genre: ${artistGenre}`)
     document.querySelector('.year-formed').append(`Started in ${artistFormedYear}`)
     document.querySelector('.artist-webpage').append(artistWebpage)
+    document.querySelector('.artist-webpage-link').append(artistWebpageLink)
     document.querySelector('.artist-twitter').append(artistTwitter)
+    document.querySelector('.artist-twitter').append(artistTwitterLink)
     document.querySelector('.artist-bio').append(artistBiography)
 
     // Getting Top Five Tracks
@@ -60,13 +66,21 @@ async function returnResults() {
 
     let googleMusic = `https://www.youtube.com/results?search_query=`
 
+    // If object has no image it'll use a default pic so it doesn't break my code
+    function checkImg(str) {
+        if (str === null) {
+            return `https://emeraldguitars.com/wp-content/uploads/2018/08/X7-red-hero.jpg`
+        } else {
+            return str.toString()
+        }
+    }
 
-    // Artist Top Five Tracks With Clickable links
+    // Artist Top Five Tracks With Clickable links and appending
     let topFiveTracks = document.createElement('h3')
     topFiveTracks.innerHTML = `Artist's Top Five Tracks`
     let trackOneInfo = topTenResponse.data.track[0].strTrack
     let trackOneAlbumInfo = topTenResponse.data.track[0].strAlbum
-    let trackOneImgURL = topTenResponse.data.track[0].strTrackThumb.toString()
+    let trackOneImgURL = checkImg(topTenResponse.data.track[0].strTrackThumb)
     let musicLinkSongOne = trackOneInfo.replace(" ", "+")
     let musicLinkAlbumOne = trackOneAlbumInfo.replace(" ", "+")
     let musicLinkOne = (`${googleMusic}${musicLinkSongOne}+${musicLinkAlbumOne}`).toString()
@@ -78,10 +92,14 @@ async function returnResults() {
     let trackOneMusicAlbum = document.createElement('a')
     trackOneMusicAlbum.setAttribute('href', `${musicLinkOne}`)
     trackOneMusicAlbum.innerHTML = trackOneAlbumInfo
+    document.querySelector('.top-five').append(topFiveTracks)
+    document.querySelector('.track-one-img').append(trackOneImg)
+    document.querySelector('.track-one-name').append(trackOneMusic)
+    document.querySelector('.track-one-album').append(trackOneMusicAlbum)
 
     let trackTwoInfo = topTenResponse.data.track[1].strTrack
     let trackTwoAlbumInfo = topTenResponse.data.track[1].strAlbum
-    let trackTwoImgURL = topTenResponse.data.track[1].strTrackThumb.toString()
+    let trackTwoImgURL = checkImg(topTenResponse.data.track[1].strTrackThumb)
     let musicLinkSongTwo = trackTwoInfo.replace(" ", "+")
     let musicLinkAlbumTwo = trackTwoAlbumInfo.replace(" ", "+")
     let musicLinkTwo = (`${googleMusic}${musicLinkSongTwo}+${musicLinkAlbumTwo}`).toString()
@@ -93,10 +111,13 @@ async function returnResults() {
     let trackTwoMusicAlbum = document.createElement('a')
     trackTwoMusicAlbum.setAttribute('href', `${musicLinkTwo}`)
     trackTwoMusicAlbum.innerHTML = trackTwoAlbumInfo
+    document.querySelector('.track-two-img').append(trackTwoImg)
+    document.querySelector('.track-two-name').append(trackTwoMusic)
+    document.querySelector('.track-two-album').append(trackTwoMusicAlbum)
 
     let trackThreeInfo = topTenResponse.data.track[2].strTrack
     let trackThreeAlbumInfo = topTenResponse.data.track[2].strAlbum
-    let trackThreeImgURL = topTenResponse.data.track[2].strTrackThumb.toString()
+    let trackThreeImgURL = checkImg(topTenResponse.data.track[2].strTrackThumb)
     let musicLinkSongThree = trackThreeInfo.replace(" ", "+")
     let musicLinkAlbumThree = trackThreeAlbumInfo.replace(" ", "+")
     let musicLinkThree = (`${googleMusic}${musicLinkSongThree}+${musicLinkAlbumThree}`).toString()
@@ -108,10 +129,13 @@ async function returnResults() {
     let trackThreeMusicAlbum = document.createElement('a')
     trackThreeMusicAlbum.setAttribute('href', `${musicLinkThree}`)
     trackThreeMusicAlbum.innerHTML = trackThreeAlbumInfo
+    document.querySelector('.track-three-img').append(trackThreeImg)
+    document.querySelector('.track-three-name').append(trackThreeMusic)
+    document.querySelector('.track-three-album').append(trackThreeMusicAlbum)
 
     let trackFourInfo = topTenResponse.data.track[3].strTrack
     let trackFourAlbumInfo = topTenResponse.data.track[3].strAlbum
-    let trackFourImgURL = topTenResponse.data.track[3].strTrackThumb.toString()
+    let trackFourImgURL = checkImg(topTenResponse.data.track[3].strTrackThumb)
     let musicLinkSongFour = trackFourInfo.replace(" ", "+")
     let musicLinkAlbumFour = trackFourAlbumInfo.replace(" ", "+")
     let musicLinkFour = (`${googleMusic}${musicLinkSongFour}+${musicLinkAlbumFour}`).toString()
@@ -123,10 +147,13 @@ async function returnResults() {
     let trackFourMusicAlbum = document.createElement('a')
     trackFourMusicAlbum.setAttribute('href', `${musicLinkFour}`)
     trackFourMusicAlbum.innerHTML = trackFourAlbumInfo
+    document.querySelector('.track-four-img').append(trackFourImg)
+    document.querySelector('.track-four-name').append(trackFourMusic)
+    document.querySelector('.track-four-album').append(trackFourMusicAlbum)
 
     let trackFiveInfo = topTenResponse.data.track[4].strTrack
     let trackFiveAlbumInfo = topTenResponse.data.track[4].strAlbum
-    let trackFiveImgURL = topTenResponse.data.track[4].strTrackThumb.toString()
+    let trackFiveImgURL = checkImg(topTenResponse.data.track[4].strTrackThumb)
     let musicLinkSongFive = trackFiveInfo.replace(" ", "+")
     let musicLinkAlbumFive = trackFiveAlbumInfo.replace(" ", "+")
     let musicLinkFive = (`${googleMusic}${musicLinkSongFive}+${musicLinkAlbumFive}`).toString()
@@ -138,25 +165,8 @@ async function returnResults() {
     let trackFiveMusicAlbum = document.createElement('a')
     trackFiveMusicAlbum.setAttribute('href', `${musicLinkFive}`)
     trackFiveMusicAlbum.innerHTML = trackFiveAlbumInfo
-
-    // Appending Top Ten Tracks to site
-    document.querySelector('.top-five').append(topFiveTracks)
-    document.querySelector('.track-one-img').append(trackOneImg)
-    document.querySelector('.track-one-name').append(trackOneMusic)
-    document.querySelector('.track-one-album').append(trackOneMusicAlbum)
-    document.querySelector('.track-two-img').append(trackTwoImg)
-    document.querySelector('.track-two-name').append(trackTwoMusic)
-    document.querySelector('.track-two-album').append(trackTwoMusicAlbum)
-    document.querySelector('.track-three-img').append(trackThreeImg)
-    document.querySelector('.track-three-name').append(trackThreeMusic)
-    document.querySelector('.track-three-album').append(trackThreeMusicAlbum)
-    document.querySelector('.track-four-img').append(trackFourImg)
-    document.querySelector('.track-four-name').append(trackFourMusic)
-    document.querySelector('.track-four-album').append(trackFourMusicAlbum)
     document.querySelector('.track-five-img').append(trackFiveImg)
     document.querySelector('.track-five-name').append(trackFiveMusic)
     document.querySelector('.track-five-album').append(trackFiveMusicAlbum)
-
-    //console.log(topTenResponse)
 
 }
