@@ -52,9 +52,10 @@ body {
     text-align: center;
 }
 
-.track-one-img, .track-two-img, .track-three-img, .track-four-img, .track-five-img {
+.top-five-tracks > img {
     max-width: 50%;
-    display: inline-block;
+    display: block;
+    margin: auto;
 }
 
 .center-container {
