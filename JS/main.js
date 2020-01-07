@@ -69,7 +69,7 @@ async function returnResults() {
     // If object has no image it'll use a default pic so it doesn't break my code
     function checkImg(str) {
         if (str === null) {
-            return `https://emeraldguitars.com/wp-content/uploads/2018/08/X7-red-hero.jpg`
+            return `https://bitsofco.de/content/images/2018/12/broken-1.png`
         } else {
             return str.toString()
         }
