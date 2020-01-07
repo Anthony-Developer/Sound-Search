@@ -7,6 +7,8 @@ getResults.addEventListener('click', returnResults)
 
 window.onload = trendingTracks()
 
+document.querySelector('.top-track-button').addEventListener('click', trendingTracks)
+
 async function trendingTracks() {
     let trendingResponse = await axios.get(
         trendingTracksAPI
@@ -15,9 +17,14 @@ async function trendingTracks() {
 
     for (let i = 0; i <= trendingResponse.data.tracks.track.length; i++) {
 
-        let artistName = trendingResponse.data.tracks.track[i].artist.name
-        let trackName = trendingResponse.data.tracks.track[i].name
+        let artistNameText = trendingResponse.data.tracks.track[i].artist.name
+        let artistName = document.createElement('h4')
+        artistName.innerHTML = artistNameText
+        let trackNameText = trendingResponse.data.tracks.track[i].name
+        let trackName = document.createElement('h4')
+        trackName.innerHTML = trackNameText
         let songLinkURL = trendingResponse.data.tracks.track[i].url.toString()
+
         let songLink = document.createElement('a')
         songLink.setAttribute('href', `${songLinkURL}`)
         songLink.setAttribute('target', '_blank')
@@ -25,15 +32,18 @@ async function trendingTracks() {
         let artistImgURL = trendingResponse.data.tracks.track[i].image[2]['#text'].toString()
         artistImg = document.createElement('img')
         artistImg.setAttribute('src', `${artistImgURL}`)
-        document.querySelector('.trending-tracks').append(artistImg)
-        document.querySelector('.trending-tracks').append(artistName)
-        document.querySelector('.trending-tracks').append(trackName)
-        document.querySelector('.trending-tracks').append(songLink)
+        let trackDiv = document.createElement('div')
+        trackDiv.setAttribute('class', 'trending-track-divs')
+        trackDiv.append(artistImg, artistName, trackName, songLink)
+
+        document.querySelector('.trending-tracks').append(trackDiv)
     }
 }
 
 async function returnResults() {
+
     event.preventDefault()
+    emptyBioContainers()
 
     // Getting info and biography
     let userSearch = document.querySelector('#search-bar').value
@@ -52,11 +62,21 @@ async function returnResults() {
     let artistImageURL = bioResponse.data.artists[0].strArtistThumb.toString()
     let artistImage = document.createElement('img')
     artistImage.setAttribute('src', `${artistImageURL}`)
-    let artistDOB = bioResponse.data.artists[0].intBornYear
-    let artistCountry = bioResponse.data.artists[0].strCountry
-    let recordLabel = bioResponse.data.artists[0].strLabel
-    let artistGenre = bioResponse.data.artists[0].strGenre
-    let artistFormedYear = bioResponse.data.artists[0].intFormedYear
+    let artistDobInfo = bioResponse.data.artists[0].intBornYear.toString()
+    let artistDOB = document.createElement('p')
+    artistDOB.innerHTML = `Born in ${artistDobInfo}`
+    let artistCountryInfo = bioResponse.data.artists[0].strCountry.toString()
+    let artistCountry = document.createElement('p')
+    artistCountry.innerHTML = artistCountryInfo
+    let recordLabelInfo = bioResponse.data.artists[0].strLabel
+    let recordLabel = document.createElement('p')
+    recordLabel.innerHTML = `Record Label:  ${recordLabelInfo}`
+    let artistGenreInfo = bioResponse.data.artists[0].strGenre
+    let artistGenre = document.createElement('p')
+    artistGenre.innerHTML = `Genre:  ${artistGenreInfo}`
+    let artistFormedYearInfo = bioResponse.data.artists[0].intFormedYear
+    let artistFormedYear = document.createElement('p')
+    artistFormedYear.innerHTML = `Started in  ${artistFormedYearInfo}`
     let artistWebpage = document.createElement('h4')
     artistWebpage.innerHTML = `Artist's Webpage`
     let artistURL = bioResponse.data.artists[0].strWebsite.toString()
@@ -79,11 +99,11 @@ async function returnResults() {
     document.querySelector('.biography').append(biographyText)
     document.querySelector('.artist-name').append(artistNameDisplay)
     document.querySelector('.artist-image').append(artistImage)
-    document.querySelector('.artist-DOB').append(`Born in ${artistDOB}`)
+    document.querySelector('.artist-DOB').append(artistDOB)
     document.querySelector('.artist-country').append(artistCountry)
-    document.querySelector('.record-label').append(`Record Label: ${recordLabel}`)
-    document.querySelector('.genre').append(`Genre: ${artistGenre}`)
-    document.querySelector('.year-formed').append(`Started in ${artistFormedYear}`)
+    document.querySelector('.record-label').append(recordLabel)
+    document.querySelector('.genre').append(artistGenre)
+    document.querySelector('.year-formed').append(artistFormedYear)
     document.querySelector('.artist-webpage').append(artistWebpage)
     document.querySelector('.artist-webpage-link').append(artistWebpageLink)
     document.querySelector('.artist-twitter').append(artistTwitter)
@@ -141,4 +161,22 @@ async function returnResults() {
 
     }
 
+}
+
+function emptyBioContainers() {
+    document.querySelector('.artist-image').innerHTML = ""
+    document.querySelector('.artist-name').innerHTML = ""
+    document.querySelector('.artist-DOB').innerHTML = ""
+    document.querySelector('.artist-country').innerHTML = ""
+    document.querySelector('.year-formed').innerHTML = ""
+    document.querySelector('.record-label').innerHTML = ""
+    document.querySelector('.genre').innerHTML = ""
+    document.querySelector('.artist-webpage').innerHTML = ""
+    document.querySelector('.artist-webpage-link').innerHTML = ""
+    document.querySelector('.artist-twitter').innerHTML = ""
+    document.querySelector('.artist-twitter-link').innerHTML = ""
+    document.querySelector('.biography').innerHTML = ""
+    document.querySelector('.artist-bio').innerHTML = ""
+    document.querySelector('.top-five').innerHTML = ""
+    document.querySelector('.top-five-tracks').innerHTML = ""
 }

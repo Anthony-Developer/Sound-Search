@@ -8,7 +8,7 @@ body {
     background-color: black;
     background-size: contain;
     width: auto;
-    height: 150px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,11 +22,56 @@ body {
     text-align: center;
 }
 
-.main-container {
-    text-align: center;
+.trending-tracks {
     display: flex;
     flex-wrap: wrap;
-    padding: 25px;
+    justify-content: center;
+}
+
+.nav-bar {
+    text-align: center;
+    background-color: black;
+    padding: 5px;
+}
+
+.top-album-button {
+    background:none;
+    border:none;
+    margin:0;
+    padding:20px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.top-track-button {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.menu-section {
+    max-width: 30%;
+    background-color: white;
+    height: 800px;
+}
+
+.trending-track-divs {
+    text-align: center;
+    padding: 50px;
+}
+
+.main-container {
+    /* text-align: center; */
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: center; */
+    /* padding: 25px; */
 }
 
 .main-container-two {
@@ -37,7 +82,14 @@ body {
     text-align: center;
 }
 
-.main-content {
+/* .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 80%;
+} */
+
+.main-content-two {
     height: auto;
 }
 
@@ -48,7 +100,7 @@ body {
 .left-container {
     max-width: 20%;
     width: 400px;
-    height: 1000px;
+    height: auto;
     color: black;
     justify-content: center;
     text-align: center;
@@ -72,6 +124,7 @@ body {
     width: 800px;
     height: auto;
     padding: 40px;
+    margin: 30px;
     background-color: white;
 }
 
