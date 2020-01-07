@@ -10,60 +10,49 @@ A site where users can come to search for new music, see trending songs around t
 
 ## API and Data Sample
 
-[SoundCloud API](https://developers.soundcloud.com/docs/api/reference#connect)
+[The AudioDB API](https://www.theaudiodb.com/api_guide.php)
 
 ### API Data Sample
 
 ```JSON
 {
-  "id": 13158665,
-  "created_at": "2011/04/06 15:37:43 +0000",
-  "user_id": 3699101,
-  "duration": 18109,
-  "commentable": true,
-  "state": "finished",
-  "sharing": "public",
-  "tag_list": "soundcloud:source=iphone-record",
-  "permalink": "munching-at-tiannas-house",
-  "description": null,
-  "streamable": true,
-  "downloadable": true,
-  "genre": null,
-  "release": null,
-  "purchase_url": null,
-  "label_id": null,
-  "label_name": null,
-  "isrc": null,
-  "video_url": null,
-  "track_type": "recording",
-  "key_signature": null,
-  "bpm": null,
-  "title": "Munching at Tiannas house",
-  "release_year": null,
-  "release_month": null,
-  "release_day": null,
-  "original_format": "m4a",
-  "original_content_size": 10211857,
-  "license": "all-rights-reserved",
-  "uri": "https://api.soundcloud.com/tracks/13158665",
-  "permalink_url": "https://soundcloud.com/user2835985/munching-at-tiannas-house",
-  "artwork_url": null,
-  "waveform_url": "https://w1.sndcdn.com/fxguEjG4ax6B_m.png",
-  "user": {
-    "id": 3699101,
-    "permalink": "user2835985",
-    "username": "user2835985",
-    "uri": "https://api.soundcloud.com/users/3699101",
-    "permalink_url": "https://soundcloud.com/user2835985",
-    "avatar_url": "https://a1.sndcdn.com/images/default_avatar_large.png?142a848"
-  },
-  "stream_url": "https://api.soundcloud.com/tracks/13158665/stream",
-  "download_url": "https://api.soundcloud.com/tracks/13158665/download",
-  "playback_count": 0,
-  "download_count": 0,
-  "favoritings_count": 0,
-  "comment_count": 0,
-  "attachments_uri": "https://api.soundcloud.com/tracks/13158665/attachments"
+    "artists": [
+        {
+            "idArtist": "111239",
+            "strArtist": "Coldplay",
+            "strArtistStripped": null,
+            "strArtistAlternate": "",
+            "strLabel": "Parlophone",
+            "idLabel": "45114",
+            "intFormedYear": "1996",
+            "intBornYear": "1996",
+            "intDiedYear": null,
+            "strDisbanded": null,
+            "strStyle": "Rock/Pop",
+            "strGenre": "Alternative Rock",
+            "strMood": "Happy",
+            "strWebsite": "www.coldplay.com",
+            "strFacebook": "www.facebook.com/coldplay",
+            "strTwitter": "www.twitter.com/coldplay",
+            "strBiographyEN": "Coldplay are a British alternative rock band formed in 1996 by lead vocalist Chris Martin and lead guitarist Jonny Buckland at University College London. After they formed Pectoralz, Guy Berryman joined the group as a bassist and they changed their name to Starfish. Will Champion joined as a drummer, backing vocalist, and multi-instrumentalist, completing the line-up. Manager Phil Harvey is often considered an unofficial fifth member. The band renamed themselves \"Coldplay\" in 1998, before recording and releasing three EPs; Safety in 1998, Brothers & Sisters as a single in 1999 and The Blue Room in the same year. The latter was their first release on a major label, after signing to Parlophone.\n\nThey achieved worldwide fame with the release of the single \"Yellow\" in 2000, followed by their debut album released in the same year, Parachutes, which was nominated for the Mercury Prize. The band's second album, A Rush of Blood to the Head (2002), was released to critical acclaim and won multiple awards, including NME's Album of the Year, and has been widely considered the best of the Nelson-produced Coldplay albums. Their next release, X&Y, the best-selling album worldwide in 2005, was met with mostly positive reviews upon its release, though some critics felt that it was inferior to its predecessor. The band's fourth studio album, Viva la Vida or Death and All His Friends (2008), was produced by Brian Eno and released again to largely favourable reviews, earning several Grammy nominations and wins at the 51st Grammy Awards. On 24 October 2011, they released their fifth studio album, Mylo Xyloto, which was met with mixed to positive reviews, and was the UK's best-selling rock album of 2011.\n\nThe band has won a number of music awards throughout their career, including seven Brit Awards winning Best British Group three times, four MTV Video Music Awards, and seven Grammy Awards from twenty nominations. As one of the world's best-selling music artists, Coldplay have sold over 55 million records worldwide. In December 2009, Rolling Stone readers voted the group the fourth best artist of the 2000s.\n\nColdplay have been an active supporter of various social and political causes, such as Oxfam's Make Trade Fair campaign and Amnesty International. The group have also performed at various charity projects such as Band Aid 20, Live 8, Sound Relief, Hope for Haiti Now: A Global Benefit for Earthquake Relief, The Secret Policeman's Ball, and the Teenage Cancer Trust.",
+            "strGender": "Male",
+            "intMembers": "4",
+            "strCountry": "London, England",
+            "strCountryCode": "GB",
+            "strArtistThumb": "https://www.theaudiodb.com/images/media/artist/thumb/uxrqxy1347913147.jpg",
+            "strArtistLogo": "https://www.theaudiodb.com/images/media/artist/logo/urspuv1434553994.png",
+            "strArtistClearart": "https://www.theaudiodb.com/images/media/artist/clearart/ruyuwv1510827568.png",
+            "strArtistWideThumb": "https://www.theaudiodb.com/images/media/artist/widethumb/sxqspt1516190718.jpg",
+            "strArtistFanart": "https://www.theaudiodb.com/images/media/artist/fanart/spvryu1347980801.jpg",
+            "strArtistFanart2": "https://www.theaudiodb.com/images/media/artist/fanart/uupyxx1342640221.jpg",
+            "strArtistFanart3": "https://www.theaudiodb.com/images/media/artist/fanart/qstpsp1342640238.jpg",
+            "strArtistBanner": "https://www.theaudiodb.com/images/media/artist/banner/xuypqw1386331010.jpg",
+            "strMusicBrainzID": "cc197bad-dc9c-440d-a5b5-d52ba2e14234",
+            "strLastFMChart": "http://www.last.fm/music/Coldplay/+charts?rangetype=6month",
+            "intCharted": "3",
+            "strLocked": "unlocked"
+        }
+    ]
 }
 
 ```
@@ -78,13 +67,13 @@ A site where users can come to search for new music, see trending songs around t
 
 - Allow user to search for a track
 - Display track information for song 
-- Implement the Soundcloud widget and actually play the song the user searched for
+- Redirect users to Youtube to listen to selected tracks
 
 
 #### PostMVP 
 
-- Implement a "Buy Track" option that would take users to the iTunes store for selected song
-- Be able to also take users to Youtube and see videos for the song selected
+- Implement a "Now Trending" section
+- Implement a "Now Trending" by region
 
 
 ## Project Schedule
@@ -98,10 +87,10 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |Jan 2rd| Project Prompt | Complete
 |Jan 3rd| Wireframes / Priority Matrix / Basic Structure | Complete
 |Jan 4th| Retrieve Data from API / Display Data On Site  | Complete
-|Jan 5th| Play Audio from API | Incomplete
+|Jan 5th| Redirect User to Youtube to Play Selected Audio  | Complete
 |Jan 6th| Make Site Responsive / Trending Songs | Incomplete
 |Jan 7th| Create Themes | Incomplete
-|Jan 8th| Takes User to iTunes Store for Purchase | Incomplete
+|Jan 8th| Polish Site's CSS | Incomplete
 |Jan 9th| Present | Incomplete
 
 
@@ -124,9 +113,8 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 | Get Music to Play on Site | H | 4 hrs| 0 hrs | 0 hrs |
 | Get Trending Songs From Around The World | M | 2 hrs| 0 hrs | 0 hrs |
 | Create New Display For Trendings Songs | M | 4 hrs| 0 hrs | 0 hrs |
-| Implement "Buy Song" Feature | L | 4 hrs| 0 hrs | 0 hrs |
 | Create a "Theme" Toggle for Site | L | 3 hrs| 0 hrs | 0 hrs |
-| Total | H | 28 hrs| 0 hrs | 0 hrs |
+| Total | H | 24 hrs| 0 hrs | 0 hrs |
 
 
 ## Code Snippet
