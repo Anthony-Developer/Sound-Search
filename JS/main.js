@@ -1,9 +1,36 @@
 const artistBio = 'https://www.theaudiodb.com/api/v1/json/1/search.php?s='
 const artistTopTen = 'https://www.theaudiodb.com/api/v1/json/195003/track-top10.php?s='
-const trendingSinglesAPI = 'https://www.theaudiodb.com/api/v1/json/1/trending.php?country=us&type=itunes&format=singles'
+const trendingTracksAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 
 let getResults = document.querySelector('#get-results')
 getResults.addEventListener('click', returnResults)
+
+window.onload = trendingTracks()
+
+async function trendingTracks() {
+    let trendingResponse = await axios.get(
+        trendingTracksAPI
+    )
+    console.log(trendingResponse)
+
+    for (let i = 0; i <= trendingResponse.data.tracks.track.length; i++) {
+
+        let artistName = trendingResponse.data.tracks.track[i].artist.name
+        let trackName = trendingResponse.data.tracks.track[i].name
+        let songLinkURL = trendingResponse.data.tracks.track[i].url.toString()
+        let songLink = document.createElement('a')
+        songLink.setAttribute('href', `${songLinkURL}`)
+        songLink.setAttribute('target', '_blank')
+        songLink.innerHTML = 'Link To Song'
+        let artistImgURL = trendingResponse.data.tracks.track[i].image[2]['#text'].toString()
+        artistImg = document.createElement('img')
+        artistImg.setAttribute('src', `${artistImgURL}`)
+        document.querySelector('.trending-tracks').append(artistImg)
+        document.querySelector('.trending-tracks').append(artistName)
+        document.querySelector('.trending-tracks').append(trackName)
+        document.querySelector('.trending-tracks').append(songLink)
+    }
+}
 
 async function returnResults() {
     event.preventDefault()
@@ -68,8 +95,6 @@ async function returnResults() {
     let topTenResponse = await axios.get(
         urlToSendTopTen
     )
-
-    console.log(topTenResponse)
 
     let googleMusic = `https://www.youtube.com/results?search_query=`
 

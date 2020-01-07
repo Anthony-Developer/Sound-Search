@@ -5,7 +5,6 @@ body {
 }
 
 .header-container {
-    /* background-image: url('https://res.cloudinary.com/anthony-dev/image/upload/v1578071315/hands-up_tujitx.jpg'); */
     background-color: black;
     background-size: contain;
     width: auto;
@@ -19,7 +18,18 @@ body {
     color: white;
 }
 
+.trending-title {
+    text-align: center;
+}
+
 .main-container {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 25px;
+}
+
+.main-container-two {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -48,7 +58,6 @@ body {
     max-width: 30%;
     width: 400px;
     height: auto;
-    /* background-color: #aeb1b5; */
     text-align: center;
 }
 
@@ -81,9 +90,10 @@ footer {
     padding: 30px;
 }
 
-img {
-    background-size: contain;
-    max-width: 950px;
-    width: 85%;
-    height: auto;
+.artist-image > img {
+    /* background-size: contain; */
+    /* max-width: 950px; */
+    max-width: 85%;
+    display: block;
+    margin: auto;
 }
