@@ -34,7 +34,7 @@ body {
     padding: 5px;
 }
 
-.top-album-button {
+.top-artist-button {
     background:none;
     border:none;
     margin:0;
@@ -54,24 +54,10 @@ body {
     font-size: 20px;
 }
 
-.menu-section {
-    max-width: 30%;
-    background-color: white;
-    height: 800px;
-}
-
 .trending-track-divs {
     text-align: center;
-    padding: 50px;
-}
-
-.main-container {
-    /* text-align: center; */
-    /* display: flex; */
-    /* flex-wrap: nowrap; */
-    /* flex-wrap: nowrap; */
-    /* justify-content: center; */
-    /* padding: 25px; */
+    padding: 30px;
+    max-width: 345px;
 }
 
 .main-container-two {
@@ -81,13 +67,6 @@ body {
     color: black;
     text-align: center;
 }
-
-/* .main-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 80%;
-} */
 
 .main-content-two {
     height: auto;
@@ -144,8 +123,6 @@ footer {
 }
 
 .artist-image > img {
-    /* background-size: contain; */
-    /* max-width: 950px; */
     max-width: 85%;
     display: block;
     margin: auto;

@@ -1,19 +1,24 @@
 const artistBio = 'https://www.theaudiodb.com/api/v1/json/1/search.php?s='
 const artistTopTen = 'https://www.theaudiodb.com/api/v1/json/195003/track-top10.php?s='
 const trendingTracksAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
+const trendingArtistAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 
 let getResults = document.querySelector('#get-results')
 getResults.addEventListener('click', returnResults)
 
 window.onload = trendingTracks()
+// window.onload = trendingArtists()
 
 document.querySelector('.top-track-button').addEventListener('click', trendingTracks)
+document.querySelector('.top-artist-button').addEventListener('click', trendingArtists)
 
 async function trendingTracks() {
+    emptyTrendingContainers()
+    
     let trendingResponse = await axios.get(
         trendingTracksAPI
     )
-    console.log(trendingResponse)
+    // console.log(trendingResponse)
 
     for (let i = 0; i <= trendingResponse.data.tracks.track.length; i++) {
 
@@ -24,7 +29,6 @@ async function trendingTracks() {
         let trackName = document.createElement('h4')
         trackName.innerHTML = trackNameText
         let songLinkURL = trendingResponse.data.tracks.track[i].url.toString()
-
         let songLink = document.createElement('a')
         songLink.setAttribute('href', `${songLinkURL}`)
         songLink.setAttribute('target', '_blank')
@@ -37,6 +41,38 @@ async function trendingTracks() {
         trackDiv.append(artistImg, artistName, trackName, songLink)
 
         document.querySelector('.trending-tracks').append(trackDiv)
+    }
+}
+
+async function trendingArtists() {
+    emptyTrendingContainers()
+    
+    let trendingArtistResponse = await axios.get(
+        trendingArtistAPI
+    )
+    // console.log(trendingArtistResponse)
+
+    for (let i = 0; i <= trendingArtistResponse.data.artists.artist.length; i++) {
+
+    let artistNameText = trendingArtistResponse.data.artists.artist[i].name
+    let artistName = document.createElement('h3')
+    artistName.innerHTML = artistNameText
+    let artistPlaycountInfo = trendingArtistResponse.data.artists.artist[i].playcount
+    let artistPlaycount = document.createElement('h4')
+    artistPlaycount.innerHTML = `Playcount   ${artistPlaycountInfo}`
+    let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url.toString()
+    let artistLink = document.createElement('a')
+    artistLink.setAttribute('href', `${artistLinkURL}`)
+    artistLink.setAttribute('target', '_blank')
+    artistLink.innerHTML = 'Link to Profile'
+    let artistImgURL = trendingArtistResponse.data.artists.artist[i].image[2]['#text']
+    let artistImg = document.createElement('img')
+    artistImg.setAttribute('src', `${artistImgURL}`)
+    let trackDiv = document.createElement('div')
+    trackDiv.setAttribute('class', 'trending-track-divs')
+    trackDiv.append(artistImg, artistName, artistPlaycount, artistLink)
+
+    document.querySelector('.trending-tracks').append(trackDiv)
     }
 }
 
@@ -179,4 +215,8 @@ function emptyBioContainers() {
     document.querySelector('.artist-bio').innerHTML = ""
     document.querySelector('.top-five').innerHTML = ""
     document.querySelector('.top-five-tracks').innerHTML = ""
+}
+
+function emptyTrendingContainers() {
+    document.querySelector('.trending-tracks').innerHTML = ""
 }
