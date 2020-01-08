@@ -127,3 +127,11 @@ footer {
     display: block;
     margin: auto;
 }
+
+img {
+    max-width: 200px;
+}
+
+a {
+    text-decoration: none;
+}

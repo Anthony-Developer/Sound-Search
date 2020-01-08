@@ -4,22 +4,27 @@ const trendingTracksAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettop
 const trendingArtistAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 
 let getResults = document.querySelector('#get-results')
-getResults.addEventListener('click', returnResults)
+getResults.addEventListener('click', returnBioResults)
 
 window.onload = trendingTracks()
-// window.onload = trendingArtists()
 
 document.querySelector('.top-track-button').addEventListener('click', trendingTracks)
 document.querySelector('.top-artist-button').addEventListener('click', trendingArtists)
 
 async function trendingTracks() {
     emptyTrendingContainers()
+
+    // Creating proper header
+    let trendingTitle = document.createElement('h2')
+    trendingTitle.innerHTML = 'Top Trending Singles'
+    document.querySelector('.trending-title').append(trendingTitle)
     
+    // Getting Trending Singles Data
     let trendingResponse = await axios.get(
         trendingTracksAPI
     )
-    // console.log(trendingResponse)
-
+    
+    // Looping and appending trending singles
     for (let i = 0; i <= trendingResponse.data.tracks.track.length; i++) {
 
         let artistNameText = trendingResponse.data.tracks.track[i].artist.name
@@ -33,50 +38,59 @@ async function trendingTracks() {
         songLink.setAttribute('href', `${songLinkURL}`)
         songLink.setAttribute('target', '_blank')
         songLink.innerHTML = 'Link To Song'
-        let artistImgURL = trendingResponse.data.tracks.track[i].image[2]['#text'].toString()
+        // Getting image data from other API
+        let urlToSendBio = `${artistBio}${artistNameText}`.toString()
+        let bioResponse = await axios.get(urlToSendBio)
+        let artistImgURL = checkImg(bioResponse.data.artists[0].strArtistThumb)
         artistImg = document.createElement('img')
         artistImg.setAttribute('src', `${artistImgURL}`)
         let trackDiv = document.createElement('div')
         trackDiv.setAttribute('class', 'trending-track-divs')
         trackDiv.append(artistImg, artistName, trackName, songLink)
-
         document.querySelector('.trending-tracks').append(trackDiv)
+
     }
 }
 
 async function trendingArtists() {
     emptyTrendingContainers()
     
+    // Creating proper header
+    let trendingTitle = document.createElement('h2')
+    trendingTitle.innerHTML = 'Top Trending Artist'
+    document.querySelector('.trending-title').append(trendingTitle)
+
+    // Getting Trending Artist Data
     let trendingArtistResponse = await axios.get(
         trendingArtistAPI
     )
-    // console.log(trendingArtistResponse)
 
+    // Looping and appending artist
     for (let i = 0; i <= trendingArtistResponse.data.artists.artist.length; i++) {
 
-    let artistNameText = trendingArtistResponse.data.artists.artist[i].name
-    let artistName = document.createElement('h3')
-    artistName.innerHTML = artistNameText
-    let artistPlaycountInfo = trendingArtistResponse.data.artists.artist[i].playcount
-    let artistPlaycount = document.createElement('h4')
-    artistPlaycount.innerHTML = `Playcount   ${artistPlaycountInfo}`
-    let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url.toString()
-    let artistLink = document.createElement('a')
-    artistLink.setAttribute('href', `${artistLinkURL}`)
-    artistLink.setAttribute('target', '_blank')
-    artistLink.innerHTML = 'Link to Profile'
-    let artistImgURL = trendingArtistResponse.data.artists.artist[i].image[2]['#text']
-    let artistImg = document.createElement('img')
-    artistImg.setAttribute('src', `${artistImgURL}`)
-    let trackDiv = document.createElement('div')
-    trackDiv.setAttribute('class', 'trending-track-divs')
-    trackDiv.append(artistImg, artistName, artistPlaycount, artistLink)
-
-    document.querySelector('.trending-tracks').append(trackDiv)
+        let artistNameText = trendingArtistResponse.data.artists.artist[i].name
+        let artistName = document.createElement('h3')
+        artistName.innerHTML = artistNameText
+        let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url.toString()
+        let artistLink = document.createElement('a')
+        artistLink.setAttribute('href', `${artistLinkURL}`)
+        artistLink.setAttribute('target', '_blank')
+        artistLink.innerHTML = 'Link to Profile'
+        // Getting image data from other API
+        let urlToSendBio = `${artistBio}${artistNameText}`.toString()
+        let bioResponse = await axios.get(urlToSendBio)
+        let artistImgURL = checkImg(bioResponse.data.artists[0].strArtistThumb)
+        let artistImg = document.createElement('img')
+        artistImg.setAttribute('src', `${artistImgURL}`)
+        let trackDiv = document.createElement('div')
+        trackDiv.setAttribute('class', 'trending-track-divs')
+        trackDiv.append(artistImg, artistName, artistLink)
+        document.querySelector('.trending-tracks').append(trackDiv)
+    
     }
 }
 
-async function returnResults() {
+async function returnBioResults() {
 
     event.preventDefault()
     emptyBioContainers()
@@ -154,16 +168,8 @@ async function returnResults() {
 
     let googleMusic = `https://www.youtube.com/results?search_query=`
 
-    // If object has no image it'll use a default pic so it doesn't break my code
-    function checkImg(str) {
-        if (str === null) {
-            return `https://bitsofco.de/content/images/2018/12/broken-1.png`
-        } else {
-            return str.toString()
-        }
-    }
-
-    // Artist Top Five Tracks With Clickable links and appending
+   
+    // Creating proper header
     let topFiveTracks = document.createElement('h3')
     topFiveTracks.innerHTML = `Artist's Top Tracks`
     document.querySelector('.top-five').append(topFiveTracks)
@@ -199,6 +205,15 @@ async function returnResults() {
 
 }
 
+ // If object has no image it'll use a default pic so it doesn't break my code
+ function checkImg(str) {
+    if (str === null) {
+        return `https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png`
+    } else {
+        return str.toString()
+    }
+}
+
 function emptyBioContainers() {
     document.querySelector('.artist-image').innerHTML = ""
     document.querySelector('.artist-name').innerHTML = ""
@@ -218,5 +233,6 @@ function emptyBioContainers() {
 }
 
 function emptyTrendingContainers() {
+    document.querySelector('.trending-title').innerHTML = ""
     document.querySelector('.trending-tracks').innerHTML = ""
 }
