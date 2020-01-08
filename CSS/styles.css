@@ -104,7 +104,7 @@ body {
     height: auto;
     padding: 40px;
     margin: 30px;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .artist-bio {

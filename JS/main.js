@@ -146,6 +146,7 @@ async function returnBioResults() {
     artistBiography.innerText = artistBiographyData
 
     // Appending basic info and bio to site
+    document.querySelector('.center-container').style.backgroundColor= "white"
     document.querySelector('.biography').append(biographyText)
     document.querySelector('.artist-name').append(artistNameDisplay)
     document.querySelector('.artist-image').append(artistImage)
