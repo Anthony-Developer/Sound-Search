@@ -1,7 +1,16 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #aeb1b5;
+    background-color: #494E50;
+}
+
+
+h4, h3, h2 {
+    color: #3282b8;
+}
+
+#biography {
+    color: black;
 }
 
 .header-container {
@@ -16,6 +25,12 @@ body {
 #header-title {
     color: white;
     text-shadow: 2px 0px 50px #2dabf9;
+    transition: transform .2s;
+}
+
+#header-title:hover {
+    transform: scale(1.5);
+    cursor: pointer;
 }
 
 .trending-title {
@@ -27,6 +42,22 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.trending-track-divs > img {
+    transition: transform .2s;
+}
+
+.trending-track-divs > img:hover {
+    transform: scale(1.5);
+} 
+
+.trending-track-divs > a > img {
+    transition: transform .2s;
+}
+
+.trending-track-divs > a > img:hover {
+    transform: scale(1.5);
+} 
 
 .nav-bar {
     text-align: center;
@@ -58,10 +89,12 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
 }
+
 #get-results:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 	background-color:#0688fa;
 }
+
 #get-results:active {
 	position:relative;
 	top:1px;
@@ -153,39 +186,51 @@ body {
     margin: auto;
 }
 
+.artist-info > * > p {
+    color: #3282b8;
+}
+
 .copyright {
     color: white;
-   
+    margin: 0;
+    padding: 10px;
 }
 
 footer {
     background-color: black;
     text-align: center;
-    padding: 20px;
 }
 
-footer > a {
-    padding: 18px;
-}
-
-.footer-img > img {
+.footer-link > img {
     max-width: 50px;
     margin: 22px;
+    transition: transform .2s
 }
 
-.artist-image > img {
-    max-width: 85%;
-    display: block;
-    margin: auto;
+.footer-link > img:hover {
+    transform: scale(1.5)
+}
+
+.artist-image > * > img {
+    transition: transform .2s;
+}
+
+.artist-image > * > img:hover {
+    transform: scale(1.5);
 }
 
 img {
     max-width: 200px;
+    border-radius: 25%;
+}
+
+.top-five-tracks > img {
+    border-radius: 0;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: #bbe1fa;
 }
 
 a:hover {
@@ -202,7 +247,22 @@ a:hover {
     }
 
     .main-container-two {
-        flex: wrap;
+        flex-wrap: nowrap;
+        justify-content: space-around;
     }
 
+    .artist-webpage {
+        display: none;
+    }
+
+    .artist-webpage-link {
+        display: none;
+    }
+
+    .artist-twitter {
+        display: none;
+    }
+    .artist-twitter-link {
+        display: none;
+    }
 }

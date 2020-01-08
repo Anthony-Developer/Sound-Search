@@ -3,6 +3,7 @@ const artistTopTen = 'https://www.theaudiodb.com/api/v1/json/195003/track-top10.
 const trendingTracksAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 const trendingArtistAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 
+
 let getResultsButton = document.querySelector('#get-results')
 getResultsButton.addEventListener('click', returnBioResults)
 
@@ -11,6 +12,9 @@ window.onload = trendingTracks()
 
 document.querySelector('.top-track-button').addEventListener('click', trendingTracks)
 document.querySelector('.top-artist-button').addEventListener('click', trendingArtists)
+document.querySelector('#header-title').addEventListener('click', function () {
+    location.reload();
+})
 
 async function trendingTracks() {
     emptyTrendingContainers()
@@ -32,22 +36,25 @@ async function trendingTracks() {
         let artistName = document.createElement('h4')
         artistName.innerHTML = artistNameText
         let trackNameText = trendingResponse.data.tracks.track[i].name
-        let trackName = document.createElement('h4')
-        trackName.innerHTML = trackNameText
+        let artistLinkURL = trendingResponse.data.tracks.track[i].artist.url
+        let artistLink = document.createElement('a')
+        artistLink.setAttribute('href', `${artistLinkURL}`)
+        artistLink.setAttribute('target', '_blank')
         let songLinkURL = trendingResponse.data.tracks.track[i].url.toString()
         let songLink = document.createElement('a')
         songLink.setAttribute('href', `${songLinkURL}`)
         songLink.setAttribute('target', '_blank')
-        songLink.innerHTML = 'Link To Song'
+        songLink.innerHTML = trackNameText
         // Getting image data from other API
         let urlToSendBio = `${artistBio}${artistNameText}`.toString()
         let bioResponse = await axios.get(urlToSendBio)
         let artistImgURL = checkImg(bioResponse.data.artists[0].strArtistThumb)
         artistImg = document.createElement('img')
         artistImg.setAttribute('src', `${artistImgURL}`)
+        artistLink.append(artistImg)
         let trackDiv = document.createElement('div')
         trackDiv.setAttribute('class', 'trending-track-divs')
-        trackDiv.append(artistImg, artistName, trackName, songLink)
+        trackDiv.append(artistLink, artistName, songLink)
         document.querySelector('.trending-tracks').append(trackDiv)
 
     }
@@ -72,21 +79,23 @@ async function trendingArtists() {
         let artistNameText = trendingArtistResponse.data.artists.artist[i].name
         let artistName = document.createElement('h3')
         artistName.innerHTML = artistNameText
-        let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url.toString()
+        let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url
         let artistLink = document.createElement('a')
         artistLink.setAttribute('href', `${artistLinkURL}`)
         artistLink.setAttribute('target', '_blank')
-        artistLink.innerHTML = 'Link to Profile'
         // Getting image data from other API
         let urlToSendBio = `${artistBio}${artistNameText}`.toString()
         let bioResponse = await axios.get(urlToSendBio)
         let artistImgURL = checkImg(bioResponse.data.artists[0].strArtistThumb)
         let artistImg = document.createElement('img')
         artistImg.setAttribute('src', `${artistImgURL}`)
+        artistLink.append(artistImg)
         let trackDiv = document.createElement('div')
         trackDiv.setAttribute('class', 'trending-track-divs')
-        trackDiv.append(artistImg, artistName, artistLink)
+        trackDiv.append(artistLink, artistName)
         document.querySelector('.trending-tracks').append(trackDiv)
+
+        // console.log(artistImg)
 
     }
 }
@@ -95,6 +104,7 @@ async function returnBioResults() {
 
     event.preventDefault()
     emptyBioContainers()
+    document.querySelector('.record-label').scrollIntoView({ behavior: 'smooth' });
 
     // Getting info and biography
     let userSearch = document.querySelector('#search-bar').value
@@ -106,13 +116,21 @@ async function returnBioResults() {
     // Artist bio and basic info
     let biographyText = document.createElement('h3')
     biographyText.innerHTML = `Biography`
+    biographyText.style.color = 'black'
     let artistName = bioResponse.data.artists[0].strArtist
-    let artistNameDisplay = document.createElement('h3')
+    let artistNameDisplay = document.createElement('h2')
     artistNameDisplay.innerHTML = artistName
     let artistID = bioResponse.data.artists[0].idArtist
     let artistImageURL = bioResponse.data.artists[0].strArtistThumb.toString()
     let artistImage = document.createElement('img')
     artistImage.setAttribute('src', `${artistImageURL}`)
+    let urlToSend = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${userSearch}&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json`.toString()
+    let artistResponse = await axios.get(urlToSend)
+    let artistFmBio = artistResponse.data.artist.url
+    let artistFmBioLink = document.createElement('a')
+    artistFmBioLink.setAttribute('href', artistFmBio)
+    artistFmBioLink.setAttribute('target', '_blank')
+    artistFmBioLink.append(artistImage)
     let artistDobInfo = bioResponse.data.artists[0].intBornYear.toString()
     let artistDOB = document.createElement('p')
     artistDOB.innerHTML = `Born in ${artistDobInfo}`
@@ -150,7 +168,7 @@ async function returnBioResults() {
     document.querySelector('.center-container').style.backgroundColor = "white"
     document.querySelector('.biography').append(biographyText)
     document.querySelector('.artist-name').append(artistNameDisplay)
-    document.querySelector('.artist-image').append(artistImage)
+    document.querySelector('.artist-image').append(artistFmBioLink)
     document.querySelector('.artist-DOB').append(artistDOB)
     document.querySelector('.artist-country').append(artistCountry)
     document.querySelector('.record-label').append(recordLabel)
