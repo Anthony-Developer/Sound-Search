@@ -3,8 +3,9 @@ const artistTopTen = 'https://www.theaudiodb.com/api/v1/json/195003/track-top10.
 const trendingTracksAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 const trendingArtistAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=36340ce5abb30d2c4af9d8dd1e82ad55&format=json&limit=10'
 
-let getResults = document.querySelector('#get-results')
-getResults.addEventListener('click', returnBioResults)
+let getResultsButton = document.querySelector('#get-results')
+getResultsButton.addEventListener('click', returnBioResults)
+
 
 window.onload = trendingTracks()
 
@@ -18,12 +19,12 @@ async function trendingTracks() {
     let trendingTitle = document.createElement('h2')
     trendingTitle.innerHTML = 'Top Trending Singles'
     document.querySelector('.trending-title').append(trendingTitle)
-    
+
     // Getting Trending Singles Data
     let trendingResponse = await axios.get(
         trendingTracksAPI
     )
-    
+
     // Looping and appending trending singles
     for (let i = 0; i <= trendingResponse.data.tracks.track.length; i++) {
 
@@ -54,7 +55,7 @@ async function trendingTracks() {
 
 async function trendingArtists() {
     emptyTrendingContainers()
-    
+
     // Creating proper header
     let trendingTitle = document.createElement('h2')
     trendingTitle.innerHTML = 'Top Trending Artist'
@@ -86,7 +87,7 @@ async function trendingArtists() {
         trackDiv.setAttribute('class', 'trending-track-divs')
         trackDiv.append(artistImg, artistName, artistLink)
         document.querySelector('.trending-tracks').append(trackDiv)
-    
+
     }
 }
 
@@ -146,7 +147,7 @@ async function returnBioResults() {
     artistBiography.innerText = artistBiographyData
 
     // Appending basic info and bio to site
-    document.querySelector('.center-container').style.backgroundColor= "white"
+    document.querySelector('.center-container').style.backgroundColor = "white"
     document.querySelector('.biography').append(biographyText)
     document.querySelector('.artist-name').append(artistNameDisplay)
     document.querySelector('.artist-image').append(artistImage)
@@ -169,7 +170,7 @@ async function returnBioResults() {
 
     let googleMusic = `https://www.youtube.com/results?search_query=`
 
-   
+
     // Creating proper header
     let topFiveTracks = document.createElement('h3')
     topFiveTracks.innerHTML = `Artist's Top Tracks`
@@ -206,8 +207,8 @@ async function returnBioResults() {
 
 }
 
- // If object has no image it'll use a default pic so it doesn't break my code
- function checkImg(str) {
+// If object has no image it'll use a default pic so it doesn't break my code
+function checkImg(str) {
     if (str === null) {
         return `https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png`
     } else {

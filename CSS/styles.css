@@ -8,7 +8,6 @@ body {
     background-color: black;
     background-size: contain;
     width: auto;
-    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +15,7 @@ body {
 
 #header-title {
     color: white;
+    text-shadow: 2px 0px 50px #2dabf9;
 }
 
 .trending-title {
@@ -31,33 +31,75 @@ body {
 .nav-bar {
     text-align: center;
     background-color: black;
+    padding: 15px;
+}
+
+.search-container {
+    padding: 10px;
+}
+
+#search-bar {
+    border-radius: 10px;
     padding: 5px;
+}
+
+#get-results {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 12px;
+	padding:5px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+#get-results:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+#get-results:active {
+	position:relative;
+	top:1px;
 }
 
 .top-artist-button {
     background:none;
     border:none;
     margin:0;
-    padding:20px;
+    padding: 7px;
     cursor: pointer;
     color: white;
     font-size: 20px;
+}
+
+.top-artist-button:hover {
+    color: #2dabf9;
 }
 
 .top-track-button {
     background:none;
     border:none;
     margin:0;
-    padding:0;
+    padding: 7px;
     cursor: pointer;
     color: white;
     font-size: 20px;
+}
+
+.top-track-button:hover {
+    color: #2dabf9;
 }
 
 .trending-track-divs {
     text-align: center;
     padding: 30px;
     max-width: 345px;
+    flex: 15%;
 }
 
 .main-container-two {
@@ -104,7 +146,6 @@ body {
     height: auto;
     padding: 40px;
     margin: 30px;
-    /* background-color: white; */
 }
 
 .artist-bio {
@@ -114,12 +155,22 @@ body {
 
 .copyright {
     color: white;
+   
 }
 
 footer {
     background-color: black;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
+}
+
+footer > a {
+    padding: 18px;
+}
+
+.footer-img > img {
+    max-width: 50px;
+    margin: 22px;
 }
 
 .artist-image > img {
@@ -134,4 +185,24 @@ img {
 
 a {
     text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #2dabf9;
+}
+
+#search-bar {
+    margin: 0px 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .center-container {
+        display: none;
+    }
+
+    .main-container-two {
+        flex: wrap;
+    }
+
 }

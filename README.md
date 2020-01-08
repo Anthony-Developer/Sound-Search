@@ -11,6 +11,7 @@ A site where users can come to search for new music, see trending songs around t
 ## API and Data Sample
 
 [The AudioDB API](https://www.theaudiodb.com/api_guide.php)
+[LastFM API](https://www.last.fm/api/)
 
 ### API Data Sample
 
@@ -88,7 +89,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |Jan 3rd| Wireframes / Priority Matrix / Basic Structure | Complete
 |Jan 4th| Retrieve Data from API / Display Data On Site  | Complete
 |Jan 5th| Redirect User to Youtube to Play Selected Audio  | Complete
-|Jan 6th| Make Site Responsive / Trending Songs | Incomplete
+|Jan 6th| Make Site Responsive / Trending Songs | Complete
 |Jan 7th| Create Themes | Incomplete
 |Jan 8th| Polish Site's CSS | Incomplete
 |Jan 9th| Present | Incomplete
@@ -107,14 +108,14 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Initial Structure and Styling | H | 3 hrs| 2 hrs | 0 hrs |
-| Retreive Data from API Using Search | H | 4 hrs| 2.5 hrs | 0 hrs |
-| Display Data on Site | H | 4 hrs| 2 hrs | 0 hrs |
-| Get Music to Play on Site | H | 4 hrs| 0 hrs | 0 hrs |
-| Get Trending Songs From Around The World | M | 2 hrs| 0 hrs | 0 hrs |
-| Create New Display For Trendings Songs | M | 4 hrs| 0 hrs | 0 hrs |
+| Initial Structure and Styling | H | 3 hrs| 4.5 hrs | 0 hrs |
+| Retreive Data from API Using Search | H | 4 hrs| 6 hrs | 0 hrs |
+| Display Data on Site | H | 4 hrs| 6.5 hrs | 0 hrs |
+| Get Music to Play on Site | H | 4 hrs| 2.5 hrs | 0 hrs |
+| Get Trending Songs | M | 2 hrs| 3 hrs | 0 hrs |
+| Create New Display For Trendings Songs | M | 4 hrs| 5.5 hrs | 0 hrs |
 | Create a "Theme" Toggle for Site | L | 3 hrs| 0 hrs | 0 hrs |
-| Total | H | 24 hrs| 0 hrs | 0 hrs |
+| Total | H | 24 hrs| 28 hrs | 0 hrs |
 
 
 ## Code Snippet
@@ -129,3 +130,6 @@ function reverse(string) {
 
 ## Change Log
  Use this section to document what changes were made and the reasoning behind those changes. 
+
+ - Couldn't implement trending songs around the world as my API doesn't provide   that data
+ - Couldn't implement playing audio as the SoundCloud API is not giving out       keys at the moment
