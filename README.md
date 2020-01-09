@@ -6,12 +6,12 @@ Sound Search
 
 ## Project Description
 
-A site where users can come to search for new music, see trending songs around the world and discover new tracks. The site will give user artist name, album name, song name and album art for individual tracks.  
+A site where users can come to discover new music and read biographies on their favorite artist. You can see trending songs or trending artist and be redirected to thier sites to get more information. The site will give users a vast amount of information on specific artist along with their top tracks of all-time.   
 
 ## API and Data Sample
 
-[The AudioDB API](https://www.theaudiodb.com/api_guide.php)
-[LastFM API](https://www.last.fm/api/)
+- [The AudioDB API](https://www.theaudiodb.com/api_guide.php)
+- [LastFM API](https://www.last.fm/api/)
 
 ### API Data Sample
 
