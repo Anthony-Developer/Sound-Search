@@ -26,10 +26,11 @@ h4, h3, h2 {
     color: white;
     text-shadow: 2px 0px 50px #2dabf9;
     transition: transform .2s;
+    font-size: 3em;
 }
 
 #header-title:hover {
-    transform: scale(1.5);
+    transform: scale(1.10);
     cursor: pointer;
 }
 
@@ -43,21 +44,16 @@ h4, h3, h2 {
     justify-content: center;
 }
 
-.trending-track-divs > img {
-    transition: transform .2s;
+.trending-track-divs > a {
     width: 80%;
 }
-
-.trending-track-divs > img:hover {
-    transform: scale(1.5);
-} 
 
 .trending-track-divs > a > img {
     transition: transform .2s;
 }
 
 .trending-track-divs > a > img:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
 } 
 
 .nav-bar {
@@ -71,29 +67,33 @@ h4, h3, h2 {
 }
 
 #search-bar {
-    border-radius: 10px;
-    padding: 5px;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius:3px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #get-results {
-	box-shadow:inset 0px -3px 7px 0px #29bbff;
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color:#2dabf9;
-	border-radius:3px;
-	border:1px solid #0b0e07;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size: 12px;
-	padding:5px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #263666;
+    box-shadow:inset 0px -3px 7px 0px #29bbff;
+    text-shadow:0px 1px 0px #263666;
+    background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius:3px;
+    padding: 6px 10px;
+    margin-top: 8px;
+    background-color: #2dabf9;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
 }
 
 #get-results:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	background-color:#0688fa;
+    background-color:#0688fa;
+    color: black;
 }
 
 #get-results:active {
@@ -168,15 +168,17 @@ h4, h3, h2 {
     text-align: center;
 }
 
-.top-five-tracks > img {
+.top-five-tracks > * > img {
     max-width: 50%;
     display: block;
     margin: auto;
     transition: transform .2s;
+    border-radius: 0%;
 }
 
-.top-five-tracks > img:hover {
-    transform: scale(1.5)
+.top-five-tracks > * > img:hover {
+    transform: scale(1.25);
+    cursor: pointer;
 }
 
 .center-container {
@@ -210,11 +212,11 @@ footer {
 .footer-link > img {
     max-width: 50px;
     margin: 22px;
-    transition: transform .2s
+    transition: transform .2s;
 }
 
 .footer-link > img:hover {
-    transform: scale(1.5)
+    transform: scale(1.5);
 }
 
 .artist-image > * > img {
@@ -222,7 +224,7 @@ footer {
 }
 
 .artist-image > * > img:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
 }
 
 img {

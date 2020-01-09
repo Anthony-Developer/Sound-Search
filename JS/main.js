@@ -113,6 +113,14 @@ async function returnBioResults() {
         urlToSendBio
     )
 
+
+    if (bioResponse.data.artists === null) {
+        let errorMessage = document.createElement('h1')
+        errorMessage.innerHTML= 'Could not find that artist in our Database'
+        document.querySelector('.center-container').style.backgroundColor = "white"
+        document.querySelector('.biography').append(errorMessage)
+    }
+
     // Artist bio and basic info
     let biographyText = document.createElement('h3')
     biographyText.innerHTML = `Biography`
@@ -150,14 +158,14 @@ async function returnBioResults() {
     artistWebpage.innerHTML = `Artist's Webpage`
     let artistURL = bioResponse.data.artists[0].strWebsite.toString()
     let artistWebpageLink = document.createElement('a')
-    artistWebpageLink.setAttribute('href', `https://www.google.com/search?q=${artistURL}`)
+    artistWebpageLink.setAttribute('href', `https://${artistURL}`)
     artistWebpageLink.setAttribute('target', '_blank')
     artistWebpageLink.innerHTML = artistURL
     let artistTwitter = document.createElement('h4')
     artistTwitter.innerHTML = `Artist's Twitter`
     let artistTwitterURL = bioResponse.data.artists[0].strTwitter.toString()
     let artistTwitterLink = document.createElement('a')
-    artistTwitterLink.setAttribute('href', `https://www.google.com/search?q=${artistTwitterURL}`)
+    artistTwitterLink.setAttribute('href', `https://${artistTwitterURL}`)
     artistTwitterLink.setAttribute('target', '_blank')
     artistTwitterLink.innerHTML = artistTwitterURL
     let artistBiographyData = bioResponse.data.artists[0].strBiographyEN
@@ -186,11 +194,11 @@ async function returnBioResults() {
         urlToSendTopTen
     )
 
-    let googleMusic = `https://www.youtube.com/results?search_query=`
+    let lastFmMusic = `https://www.last.fm/search/tracks?q=`
 
 
     // Creating proper header
-    let topFiveTracks = document.createElement('h3')
+    let topFiveTracks = document.createElement('h2')
     topFiveTracks.innerHTML = `Artist's Top Tracks`
     document.querySelector('.top-five').append(topFiveTracks)
 
@@ -198,27 +206,27 @@ async function returnBioResults() {
     for (let i = 0; i <= topTenResponse.data.track[4].strTrack.length; i++) {
 
         let trackInfo = topTenResponse.data.track[i].strTrack
+        
+        let track = document.createElement('h3')
+        track.innerHTML = trackInfo
         let trackAlbumInfo = topTenResponse.data.track[i].strAlbum
+        let trackAlbum = document.createElement('h4')
+        trackAlbum.innerHTML = trackAlbumInfo
         let trackImgURL = checkImg(topTenResponse.data.track[i].strTrackThumb)
-        let musicLinkSong = trackInfo.replace(" ", "+")
-        let musicLinkAlbum = trackAlbumInfo.replace(" ", "+")
-        let musicLink = (`${googleMusic}${musicLinkSong}+${musicLinkAlbum}`).toString()
+        let musicLink = (`${lastFmMusic}${userSearch}+${trackInfo}`).toString()
         let trackImg = document.createElement('img')
         trackImg.setAttribute('src', `${trackImgURL}`)
         let trackMusic = document.createElement('a')
         trackMusic.setAttribute('href', `${musicLink}`)
         trackMusic.setAttribute('target', '_blank')
         trackMusic.style.display = 'block'
-        trackMusic.innerHTML = trackInfo
-        let trackMusicAlbum = document.createElement('a')
-        trackMusicAlbum.setAttribute('href', `${musicLink}`)
-        trackMusicAlbum.setAttribute('target', '_blank')
-        trackMusicAlbum.innerHTML = trackAlbumInfo
+        trackMusic.append(trackImg)
+        
         let trackBreak = document.createElement('div')
         trackBreak.style.height = '15px'
-        document.querySelector('.top-five-tracks').append(trackImg)
         document.querySelector('.top-five-tracks').append(trackMusic)
-        document.querySelector('.top-five-tracks').append(trackMusicAlbum)
+        document.querySelector('.top-five-tracks').append(track)
+        document.querySelector('.top-five-tracks').append(trackAlbum)
         document.querySelector('.top-five-tracks').append(trackBreak)
 
     }
