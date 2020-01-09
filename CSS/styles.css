@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #494E50;
+    background-color: #1C1D1E;
 }
 
 
@@ -45,6 +45,7 @@ h4, h3, h2 {
 
 .trending-track-divs > img {
     transition: transform .2s;
+    width: 80%;
 }
 
 .trending-track-divs > img:hover {
@@ -171,6 +172,11 @@ h4, h3, h2 {
     max-width: 50%;
     display: block;
     margin: auto;
+    transition: transform .2s;
+}
+
+.top-five-tracks > img:hover {
+    transform: scale(1.5)
 }
 
 .center-container {
@@ -264,5 +270,9 @@ a:hover {
     }
     .artist-twitter-link {
         display: none;
+    }
+
+    .artist-image > * > img {
+        max-width: 100px;
     }
 }
