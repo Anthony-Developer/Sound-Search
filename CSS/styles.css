@@ -25,12 +25,12 @@ h4, h3, h2 {
 #header-title {
     color: white;
     text-shadow: 2px 0px 50px #2dabf9;
-    transition: transform .2s;
+    /* transition: transform .2s; */
     font-size: 3em;
 }
 
 #header-title:hover {
-    transform: scale(1.10);
+    /* transform: scale(1.10); */
     cursor: pointer;
 }
 
@@ -63,12 +63,13 @@ h4, h3, h2 {
 }
 
 .search-container {
-    padding: 10px;
+    padding: 0px;
 }
 
 #search-bar {
     padding: 6px;
     margin-top: 8px;
+    margin: 0px;
     font-size: 14px;
     border: none;
     border-radius:3px;
@@ -83,7 +84,7 @@ h4, h3, h2 {
     font-family: 'Poppins', sans-serif;
     border-radius:3px;
     padding: 6px 10px;
-    margin-top: 8px;
+    /* margin-top: 8px; */
     background-color: #2dabf9;
     font-size: 14px;
     border: none;
@@ -109,6 +110,7 @@ h4, h3, h2 {
     cursor: pointer;
     color: white;
     font-size: 20px;
+    outline: none;
 }
 
 .top-artist-button:hover {
@@ -123,6 +125,7 @@ h4, h3, h2 {
     cursor: pointer;
     color: white;
     font-size: 20px;
+    outline: none;
 }
 
 .top-track-button:hover {
@@ -243,10 +246,6 @@ a {
 
 a:hover {
     color: #2dabf9;
-}
-
-#search-bar {
-    margin: 0px 15px;
 }
 
 @media only screen and (max-width: 600px) {

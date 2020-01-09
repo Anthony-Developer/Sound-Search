@@ -91,7 +91,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |Jan 5th| Redirect User to Youtube to Play Selected Audio  | Complete
 |Jan 6th| Make Site Responsive / Trending Songs | Complete
 |Jan 7th| Create Themes | Incomplete
-|Jan 8th| Polish Site's CSS | Incomplete
+|Jan 8th| Polish Site's CSS | Complete
 |Jan 9th| Present | Incomplete
 
 
@@ -109,13 +109,13 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Initial Structure and Styling | H | 3 hrs| 4.5 hrs | 0 hrs |
-| Retreive Data from API Using Search | H | 4 hrs| 6 hrs | 0 hrs |
-| Display Data on Site | H | 4 hrs| 6.5 hrs | 0 hrs |
-| Get Music to Play on Site | H | 4 hrs| 2.5 hrs | 0 hrs |
+| Retreive Data from API Using Search | H | 4 hrs| 7 hrs | 0 hrs |
+| Display Data on Site | H | 4 hrs| 9.5 hrs | 0 hrs |
+| Get Music to Play on Site | H | 4 hrs| 3.5 hrs | 0 hrs |
 | Get Trending Songs | M | 2 hrs| 3 hrs | 0 hrs |
-| Create New Display For Trendings Songs | M | 4 hrs| 5.5 hrs | 0 hrs |
+| Create New Display For Trendings Songs | M | 4 hrs| 7.5 hrs | 0 hrs |
 | Create a "Theme" Toggle for Site | L | 3 hrs| 0 hrs | 0 hrs |
-| Total | H | 24 hrs| 28 hrs | 0 hrs |
+| Total | H | 24 hrs| 35 hrs | 0 hrs |
 
 
 ## Code Snippet
@@ -123,9 +123,35 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+  // Using one API to get certain data and then calling on another API to get certain data and append them together during the loop.
+  
+  // Getting Trending Artist Data
+    let trendingArtistResponse = await axios.get(
+        trendingArtistAPI
+    )
+
+    // Looping and appending artist
+    for (let i = 0; i <= trendingArtistResponse.data.artists.artist.length; i++) {
+
+        let artistNameText = trendingArtistResponse.data.artists.artist[i].name
+        let artistName = document.createElement('h3')
+        artistName.innerHTML = artistNameText
+        let artistLinkURL = trendingArtistResponse.data.artists.artist[i].url
+        let artistLink = document.createElement('a')
+        artistLink.setAttribute('href', `${artistLinkURL}`)
+        artistLink.setAttribute('target', '_blank')
+        // Getting image data from other API
+        let urlToSendBio = `${artistBio}${artistNameText}`.toString()
+        let bioResponse = await axios.get(urlToSendBio)
+        let artistImgURL = checkImg(bioResponse.data.artists[0].strArtistThumb)
+        let artistImg = document.createElement('img')
+        artistImg.setAttribute('src', `${artistImgURL}`)
+        artistLink.append(artistImg)
+        let trackDiv = document.createElement('div')
+        trackDiv.setAttribute('class', 'trending-track-divs')
+        trackDiv.append(artistLink, artistName)
+        document.querySelector('.trending-tracks').append(trackDiv)
+    }
 ```
 
 ## Change Log
@@ -133,3 +159,5 @@ function reverse(string) {
 
  - Couldn't implement trending songs around the world as my API doesn't provide   that data
  - Couldn't implement playing audio as the SoundCloud API is not giving out       keys at the moment
+ - A lot of graphical changes to better present data on site
+ - Made it mobile friendly 

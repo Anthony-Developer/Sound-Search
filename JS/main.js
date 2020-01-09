@@ -6,6 +6,13 @@ const trendingArtistAPI = 'http://ws.audioscrobbler.com/2.0/?method=chart.gettop
 
 let getResultsButton = document.querySelector('#get-results')
 getResultsButton.addEventListener('click', returnBioResults)
+let getResultsEnter = document.querySelector('#search-bar')
+getResultsEnter.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.querySelector("#get-results").click();
+    }
+})
 
 
 window.onload = trendingTracks()
@@ -94,9 +101,6 @@ async function trendingArtists() {
         trackDiv.setAttribute('class', 'trending-track-divs')
         trackDiv.append(artistLink, artistName)
         document.querySelector('.trending-tracks').append(trackDiv)
-
-        // console.log(artistImg)
-
     }
 }
 
@@ -116,7 +120,7 @@ async function returnBioResults() {
 
     if (bioResponse.data.artists === null) {
         let errorMessage = document.createElement('h1')
-        errorMessage.innerHTML= 'Could not find that artist in our Database'
+        errorMessage.innerHTML = 'Could not find that artist in our Database'
         document.querySelector('.center-container').style.backgroundColor = "white"
         document.querySelector('.biography').append(errorMessage)
     }
@@ -147,10 +151,10 @@ async function returnBioResults() {
     artistCountry.innerHTML = artistCountryInfo
     let recordLabelInfo = bioResponse.data.artists[0].strLabel
     let recordLabel = document.createElement('p')
-    recordLabel.innerHTML = `Record Label:  ${recordLabelInfo}`
+    recordLabel.innerHTML = `<strong>Record Label:</strong>  ${recordLabelInfo}`
     let artistGenreInfo = bioResponse.data.artists[0].strGenre
     let artistGenre = document.createElement('p')
-    artistGenre.innerHTML = `Genre:  ${artistGenreInfo}`
+    artistGenre.innerHTML = `<strong>Genre:</strong>  ${artistGenreInfo}`
     let artistFormedYearInfo = bioResponse.data.artists[0].intFormedYear
     let artistFormedYear = document.createElement('p')
     artistFormedYear.innerHTML = `Started in  ${artistFormedYearInfo}`
@@ -206,7 +210,7 @@ async function returnBioResults() {
     for (let i = 0; i <= topTenResponse.data.track[4].strTrack.length; i++) {
 
         let trackInfo = topTenResponse.data.track[i].strTrack
-        
+
         let track = document.createElement('h3')
         track.innerHTML = trackInfo
         let trackAlbumInfo = topTenResponse.data.track[i].strAlbum
@@ -221,7 +225,7 @@ async function returnBioResults() {
         trackMusic.setAttribute('target', '_blank')
         trackMusic.style.display = 'block'
         trackMusic.append(trackImg)
-        
+
         let trackBreak = document.createElement('div')
         trackBreak.style.height = '15px'
         document.querySelector('.top-five-tracks').append(trackMusic)
